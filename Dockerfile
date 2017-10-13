@@ -11,6 +11,7 @@ RUN \
       vim \
       wget \
       curl \
+      iputils-ping \
       supervisor \
       # libyang
       libpcre3-dev \
@@ -109,5 +110,5 @@ RUN \
 ENV EDITOR vim
 EXPOSE 830
 
-COPY /opt/dev/sysrepo/deploy/docker/sysrepo-netopeer2/supervisord.conf /etc/supervisord.conf
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
+# COPY /opt/dev/sysrepo/deploy/docker/sysrepo-netopeer2/supervisord.conf /etc/supervisord.conf
+# CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
