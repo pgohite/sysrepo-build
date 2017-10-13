@@ -49,7 +49,7 @@ WORKDIR /opt/dev
 
 # libyang
 RUN \
-      git clone https://github.com/CESNET/libyang.git && \
+      git clone -b v0.13-r2 https://github.com/CESNET/libyang.git && \
       cd libyang && mkdir build && cd build && \
       cmake -DCMAKE_BUILD_TYPE:String="Release" -DENABLE_BUILD_TESTS=OFF .. && \
       make -j2 && \
@@ -58,7 +58,7 @@ RUN \
 
 # sysrepo
 RUN \
-      git clone https://github.com/sysrepo/sysrepo.git && \
+      git clone -b v0.7.1 https://github.com/sysrepo/sysrepo.git && \
       cd sysrepo && mkdir build && cd build && \
       cmake -DCMAKE_BUILD_TYPE:String="Release" -DENABLE_TESTS=OFF -DREPOSITORY_LOC:PATH=/etc/sysrepo .. && \
       make -j2 && \
@@ -76,7 +76,7 @@ RUN \
 
 # libnetconf2
 RUN \
-      git clone https://github.com/CESNET/libnetconf2.git && \
+      git clone -b v0.9-r1 https://github.com/CESNET/libnetconf2.git && \
       cd libnetconf2 && mkdir build && cd build && \
       cmake -DCMAKE_BUILD_TYPE:String="Release" -DENABLE_BUILD_TESTS=OFF .. && \
       make -j2 && \
@@ -97,7 +97,7 @@ RUN \
 # netopeer2
 RUN \
       cd /opt/dev && \
-      cd Netopeer2/server && mkdir build && cd build && \
+      cd Netopeer2/server && git checkout v0.4-r1 && mkdir build && cd build && \
       cmake -DCMAKE_BUILD_TYPE:String="Release" .. && \
       make -j2 && \
       make install && \
